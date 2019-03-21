@@ -30,15 +30,15 @@ export default {
     todo: Object
   },
   data: () => ({
-    isReadonly: true,
+    isReadonly: true
   }),
 
   methods: {
     ...mapActions(["removeTodo", "toggleTodo", "editTodo"]),
 
     edit(event) {
-      this.editTodo({id: this.todo.id, title: event.target.value})
-      this.isReadonly = true
+      this.editTodo({ id: this.todo.id, title: event.target.value });
+      this.isReadonly = true;
     }
   }
 };

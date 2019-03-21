@@ -13,7 +13,6 @@
 import Todos from "./components/Todos.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
-import { mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "todoapp",
@@ -25,7 +24,7 @@ export default {
 };
 </script>
 
-<style scooped>
+<style scoped>
 .logo {
   display: block;
   margin: 0 auto 20px;

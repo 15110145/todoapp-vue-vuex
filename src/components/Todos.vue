@@ -1,10 +1,6 @@
 <template>
   <ul class="todo-list" id="todo-list">
-    <TodoItem
-      v-for="t in todoList()"
-      :key="t.id"
-      :todo="t"
-    />
+    <TodoItem v-for="t in todoList()" :key="t.id" :todo="t"/>
   </ul>
 </template>
 
@@ -15,20 +11,20 @@ import TodoItem from "./TodoItem.vue";
 export default {
   name: "Todos",
   computed: {
-    ...mapGetters(["todos","remainingTodo","completetedTodo","currentMode"])
+    ...mapGetters(["todos", "remainingTodo", "completetedTodo", "currentMode"])
   },
   components: {
     TodoItem
   },
   methods: {
     todoList() {
-      switch(this.currentMode) {
-        case 'completed':
-          return this.completetedTodo
-        case 'remaining':
-          return this.remainingTodo
+      switch (this.currentMode) {
+        case "completed":
+          return this.completetedTodo;
+        case "remaining":
+          return this.remainingTodo;
         default:
-          return this.todos
+          return this.todos;
       }
     }
   }
