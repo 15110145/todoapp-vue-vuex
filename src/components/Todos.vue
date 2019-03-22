@@ -1,27 +1,29 @@
 <template>
   <ul class="todo-list" id="todo-list">
-    <TodoItem v-for="t in todoList()" :key="t.id" :todo="t"/>
+    <todo-item v-for="t in todoList()" :key="t.id" :todo="t"/>
   </ul>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import TodoItem from "./TodoItem.vue";
+import * as modes from "../mode-types"
 
 export default {
   name: "Todos",
-  computed: {
-    ...mapGetters(["todos", "remainingTodo", "completetedTodo", "currentMode"])
-  },
   components: {
     TodoItem
   },
+  computed: {
+    ...mapState(["todos", "mode"]),
+    ...mapGetters(["remainingTodo", "completetedTodo"])
+  },
   methods: {
     todoList() {
-      switch (this.currentMode) {
-        case "completed":
+      switch (this.mode) {
+        case modes.MODE_COMPLETED:
           return this.completetedTodo;
-        case "remaining":
+        case modes.MODE_REMAINING:
           return this.remainingTodo;
         default:
           return this.todos;

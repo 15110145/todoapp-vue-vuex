@@ -29,6 +29,7 @@ export default {
   props: {
     todo: Object
   },
+
   data: () => ({
     isReadonly: true
   }),

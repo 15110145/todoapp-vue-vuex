@@ -23,21 +23,18 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["addTodo", "completeAll", "uncompleteAll"]),
+    ...mapActions(["addTodo", "toggleAll"]),
 
     add() {
       this.addTodo(this.title);
       this.title = "";
     },
-    completeAllTodo() {
-      this.completeAllTodo();
-    },
     toggleCompleteAll() {
       if (this.isCompleteAll) {
-        this.uncompleteAll();
+        this.toggleAll(true)
         this.isCompleteAll = false;
       } else {
-        this.completeAll();
+        this.toggleAll(false);
         this.isCompleteAll = true;
       }
     }

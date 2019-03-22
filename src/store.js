@@ -17,10 +17,8 @@ export default new Vuex.Store({
   },
 
   getters: {
-    todos: (state) => (state.todos),
     remainingTodo: (state) => (state.todos.filter((todo) => (todo.completed === false))),
-    completetedTodo: (state) => (state.todos.filter((todo) => (todo.completed === true))),
-    currentMode: (state) => (state.mode)
+    completetedTodo: (state) => (state.todos.filter((todo) => (todo.completed === true)))
   },
 
   mutations: {
@@ -45,20 +43,11 @@ export default new Vuex.Store({
       temp[i].completed = !temp[i].completed
       state.todos = temp
     },
-    [types.COMPLETE_ALL](state) {
-      state.todos = state.todos.map((todo) => ({ ...todo, completed: true }))
+    [types.TOGGLE_ALL](state,truthy) {
+      state.todos = state.todos.map((todo) => ({ ...todo, completed: Boolean(truthy) }))
     },
-    [types.UNCOMPLETE_ALL](state) {
-      state.todos = state.todos.map((todo) => ({ ...todo, completed: false }))
-    },
-    [types.MODE_REMAINING](state) {
-      state.mode = 'remaining'
-    },
-    [types.MODE_COMPLETED](state) {
-      state.mode = 'completed'
-    },
-    [types.MODE_ALL](state){
-      state.mode = 'all'
+    [types.CHANGE_MODE](state, mode) {
+      state.mode = mode
     }
   },
 
@@ -75,20 +64,11 @@ export default new Vuex.Store({
     toggleTodo(context, id) {
       context.commit(types.TOGGLE_TODO, id)
     },
-    completeAll(context) {
-      context.commit(types.COMPLETE_ALL)
+    toggleAll(context, truthy) {
+      context.commit(types.TOGGLE_ALL, truthy)
     },
-    uncompleteAll(context) {
-      context.commit(types.UNCOMPLETE_ALL)
-    },
-    toModeRemaining(context) {
-      context.commit(types.MODE_REMAINING)
-    },
-    toModeCompleted(context) {
-      context.commit(types.MODE_COMPLETED)
-    },
-    toModeAll(context) {
-      context.commit(types.MODE_ALL)
+    changeMode(context, mode) {
+      context.commit(types.CHANGE_MODE, mode)
     }
   },
 
