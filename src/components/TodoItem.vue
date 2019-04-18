@@ -9,22 +9,24 @@
       @dblclick="isReadonly = false"
       @keypress.enter="edit"
       @blur="edit"
-    >
-    <button class="btn todo__remove" id="remove-todo" @click="removeTodo(todo.id)"></button>
+    />
+    <button
+      class="btn todo__remove"
+      id="remove-todo"
+      @click="removeTodo(todo.id)"/>
     <button
       class="btn todo__completed"
       :class="{ 'has-completed': todo.completed }"
       id="complete-todo"
-      @click="toggleTodo(todo.id)"
-    ></button>
+      @click="toggleTodo(todo.id)"/>
   </li>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex';
 
 export default {
-  name: "TodoItem",
+  name: 'TodoItem',
 
   props: {
     todo: Object
@@ -35,7 +37,7 @@ export default {
   }),
 
   methods: {
-    ...mapActions(["removeTodo", "toggleTodo", "editTodo"]),
+    ...mapActions(['removeTodo', 'toggleTodo', 'editTodo']),
 
     edit(event) {
       this.editTodo({ id: this.todo.id, title: event.target.value });

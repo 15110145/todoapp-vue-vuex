@@ -43,7 +43,7 @@ export default new Vuex.Store({
       temp[i].completed = !temp[i].completed
       state.todos = temp
     },
-    [types.TOGGLE_ALL](state,truthy) {
+    [types.TOGGLE_ALL](state, truthy) {
       state.todos = state.todos.map((todo) => ({ ...todo, completed: Boolean(truthy) }))
     },
     [types.CHANGE_MODE](state, mode) {

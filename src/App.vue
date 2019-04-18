@@ -1,6 +1,6 @@
 <template>
   <div class="todoapp">
-    <img class="logo" alt="Vue logo" src="./assets/logo.png">
+    <img class="logo" alt="Vue logo" src="./assets/logo.png" />
     <Header/>
     <div class="main">
       <Todos/>
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import Todos from "./components/Todos.vue";
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
+import Todos from './components/Todos.vue';
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 
 export default {
-  name: "todoapp",
+  name: 'todoapp',
   components: {
     Todos,
     Header,
